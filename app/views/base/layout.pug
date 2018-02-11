@@ -1,0 +1,9 @@
+extends skeleton
+block page
+    div.header
+        div.logo
+        if(pageName != 'login' && pageName !='register')
+            form(action="/logout", method="get")
+                button(type="submit") Logout
+    div.content
+        block content

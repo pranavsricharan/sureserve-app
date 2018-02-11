@@ -1,0 +1,13 @@
+doctype html
+head
+    title= title + ' | ' + locals.appName
+    script(src='/res/js/jquery.min.js')
+    script(src='/res/js/jstorage.min.js')
+    script(src='/res/js/moment.min.js')
+    script(src='/res/js/script.js')
+    link(rel="stylesheet", href="/res/css/style.css")
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500")
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Lato")
+body(page-name=pageName)
+    block page
+    div.footer!= '&copy;' + appName + ' 2018. All rights reserved'

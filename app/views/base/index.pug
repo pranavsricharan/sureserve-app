@@ -1,0 +1,12 @@
+extends skeleton
+block page
+    div.header
+        div.logo
+        include ../account/fragments/login_form
+    
+    div.cover
+        div.left
+            h2 Welcome to the Clandestine Collective
+        div.right
+            h3 Register
+            include ../account/fragments/register_form
