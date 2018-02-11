@@ -19,21 +19,26 @@ h2{
     font-weight: 200;
 }
 
+h3 {
+    font-size:3em;
+    font-weight: 200;
+}
+
 h4 {
     font-size: 1.5em;
 
 }
 input {
     padding: 10px 15px;
-    /*! border-radius: 3px; */
+    border-radius: 3px;
     border: 0;
     outline: none;
     margin: 5px;
-    /*! background: #bd6b6c; */
+    background: rgba(0,0,0,0.4);
     color: #fff;
-    border-bottom: 1px solid #fff;
+    /*! border-bottom: 1px solid #fff; */
     font-size: 1em;
-    background: transparent;
+    /*! background: transparent; */
 }
 
 button {
