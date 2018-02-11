@@ -157,6 +157,7 @@ button {
     border-radius: 3px;
     display: block;
     width: 300px;
+    background: transparent;
 }
 
 .error-hidden {
