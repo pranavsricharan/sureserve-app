@@ -1,9 +1,8 @@
 extends skeleton
 block page
     div.header
-        div.logo
-        if(pageName != 'login' && pageName !='register')
-            form(action="/logout", method="get")
-                button(type="submit") Logout
-    div.content
+        div.logo#logo
+        form#logout-form(action="/logout", method="get")
+            button(type="submit") Logout
+    div.content(class=(contentFullSize)?"content-full-size":'')
         block content

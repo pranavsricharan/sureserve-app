@@ -1,15 +1,16 @@
 var express = require('express')
 var router = new express.Router();
 
-
+// Set route for all api calls
 router.use('/api', require('./api/routes'))
 
+// Route definitions
 router.get('/', function(req, res) {
     res.render('base/index', {pageName: "home", title: 'Home'})
 })
 
 router.use('/dashboard', function(req, res) {
-    res.render('dashboard/index', {pageName: "dashboard", title: 'Dashboard'})
+    res.render('dashboard/index', {pageName: "dashboard", title: 'Dashboard', contentFullSize: true})
 })
 
 router.use('/login', function(req, res) {
@@ -25,7 +26,7 @@ router.use('/logout', function(req, res) {
 })
 
 router.get('/*', function(req, res) {
-    res.render('404', {pageName: "404", title: 'Page not found'})
+    res.status(404).render('404', {pageName: "404", title: 'Page not found'})
 })
 
 module.exports = router

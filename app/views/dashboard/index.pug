@@ -1,7 +1,13 @@
 extends ../base/layout
 
 block content
-    h2 Dashboard page
-    h4#username
-    p#email
-    p#member-since
+    div.left
+        h3 The dashboard acts as a launchpad to kickstart your productivity.
+        button.align-right.white-hover-btn Get Started
+    div.right
+        img.profile-img(src="/res/img/default_profile_image.jpg")
+        h2#username
+        h4 Email: 
+            span#email
+        p Joined 
+            span#member-since

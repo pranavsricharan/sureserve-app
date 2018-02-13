@@ -1,6 +1,10 @@
 var BASE_API_URL = '/api/';
 var AUTH_TOKEN_KEY = 'authToken';
 
+function closeLoading() {
+    $("#loading").css({left: '-120vw'});
+}
+
 function checkAuth() {
     if(!$.jStorage.get(AUTH_TOKEN_KEY, null)) {
         window.location.replace('/login');
@@ -15,6 +19,17 @@ function showStatus(id, text) {
 function hideStatus(id) {
     $('#' + id).addClass('error-hidden');
 }
+
+function redirectOrDisplay(pageFunction) {
+    if($.jStorage.get(AUTH_TOKEN_KEY, null)) {
+        window.location.replace('/dashboard');
+    } else {
+        pageFunction();
+        closeLoading();
+    }
+}
+
+/* Page data handlers*/
 
 function login() {
     $("#login-form").on("submit", function(e) {
@@ -102,7 +117,8 @@ function dashboard() {
             if(data) {
                 $('#username').text(data.username);
                 $('#email').text(data.email);
-                $('#member-since').text('Joined ' + moment(data.joinDate    ).fromNow());
+                $('#member-since').text(moment(data.joinDate    ).fromNow());
+                closeLoading();
             }
         }, 
         failure: function(error) {
@@ -112,6 +128,7 @@ function dashboard() {
     
 }
 
+
 $(function() {
     pageName = $('body').attr('page-name');
     console.log(pageName);
@@ -120,20 +137,26 @@ $(function() {
     if(pageName == "logout")
         $.jStorage.set(AUTH_TOKEN_KEY, null);
 
-    if(allowedPages.indexOf(pageName) == -1) {
+    if(allowedPages.indexOf(pageName) == -1)
         checkAuth();
-    }
 
+    if(!$.jStorage.get(AUTH_TOKEN_KEY, null))
+        $("#logout-form").remove();
+  
     if(pageName == "login" || pageName == "home")
-        login();
+        redirectOrDisplay(login);
 
     if(pageName == "register" || pageName == "home")
-        register();
-
+        redirectOrDisplay(register);
+       
     if(pageName == "dashboard")
         dashboard();
-    
 
-        
+    if(pageName == "404")
+        closeLoading()
+    
+    $('#logo').on('click', function(e) {
+        window.location.href = "/";
+    })
     
 });

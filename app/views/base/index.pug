@@ -1,12 +1,13 @@
 extends skeleton
 block page
     div.header
-        div.logo
+        div.logo#logo
         include ../account/fragments/login_form
     
     div.cover
         div.left
             h2 Welcome to the Clandestine Collective
+            button.align-right Learn More
         div.right
             h3 Register
             include ../account/fragments/register_form
