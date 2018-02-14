@@ -2,7 +2,7 @@ var BASE_API_URL = '/api/';
 var AUTH_TOKEN_KEY = 'authToken';
 
 function closeLoading() {
-    $("#loading").css({left: '-120vw'});
+    $("#loading").css({left: '-200vw'});
 }
 
 function checkAuth() {
